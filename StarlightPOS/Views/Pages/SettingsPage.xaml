@@ -177,7 +177,7 @@
                     <TextBlock
                         Grid.Column="1"
                         Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
-                        Text="git clone https://github.com/sh0622-kim" />
+                        Text="git clone https://github.com/sh0622-kim/StarlightPOS.git" />
                 </Grid>
                 <ui:Anchor
                     Margin="0"
@@ -187,7 +187,7 @@
                     Background="Transparent"
                     BorderThickness="0,1,0,0"
                     CornerRadius="0"
-                    NavigateUri="https://github.com/sh0622-kim">
+                    NavigateUri="https://github.com/sh0622-kim/StarlightPOS/issues">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
