@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="StarlightPOS.Views.Pages.SalesHistoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:StarlightPOS.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:StarlightPOS.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="SalesHistoryPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    ScrollViewer.CanContentScroll="False"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <converter:AmountConverter x:Key="AmountConverter" />
+    </Page.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <ui:TextBlock
+                Margin="0,0,0,8"
+                FontTypography="BodyStrong"
+                Text="매출 실적 : " />
+            <ui:TextBlock
+                Margin="0,0,0,8"
+                FontTypography="BodyStrong"
+                Text="{Binding ViewModel.TotalAmount, Mode=OneWay, Converter={StaticResource AmountConverter}}" />
+        </StackPanel>
+
+        <ui:DataGrid
+            Grid.Row="1"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding ViewModel.TableItems, Mode=TwoWay}">
+            <ui:DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="테이블 생성 ID" />
+                <DataGridTextColumn Binding="{Binding CurrentOrder.Id}" Header="상품 주문 ID" />
+                <DataGridTextColumn Binding="{Binding CurrentOrder.Date}" Header="생성 시간" />
+                <DataGridTextColumn Binding="{Binding CurrentOrder.Date}" Header="생성 시간" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="테이블명" />
+                <DataGridTextColumn Binding="{Binding CurrentOrder.Items[0].Product.Name}" Header="상품명" />
+                <DataGridTextColumn Binding="{Binding CurrentOrder.Items[0].Quantity}" Header="주문 수량" />
+                <DataGridTextColumn Binding="{Binding CurrentOrder.Items[0].TotalAmount}" Header="매출" />
+            </ui:DataGrid.Columns>
+        </ui:DataGrid>
+
+        <ui:Button
+            Grid.Row="2"
+            Margin="0,10,0,0"
+            HorizontalAlignment="Right"
+            Appearance="Primary"
+            Command="{Binding ViewModel.SaveCommand, Mode=OneWay}"
+            Content="엑셀 저장"
+            Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}" />
+    </Grid>
+</Page>

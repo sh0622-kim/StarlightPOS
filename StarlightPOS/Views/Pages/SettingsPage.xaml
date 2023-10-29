@@ -1,0 +1,204 @@
+﻿<Page
+    x:Class="StarlightPOS.Views.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:StarlightPOS.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="SettingsPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d">
+
+    <StackPanel Margin="10,0,10,24">
+        <ui:TextBlock
+            Margin="0,0,0,8"
+            FontTypography="BodyStrong"
+            Text="주막 설정" />
+
+        <ui:CardExpander
+            Margin="0,0,0,12"
+            Icon="{ui:SymbolIcon Home48}"
+            IsExpanded="True">
+            <ui:CardExpander.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ui:TextBlock
+                        Grid.Row="0"
+                        FontTypography="Body"
+                        Text="주막 정보" />
+                    <ui:TextBlock
+                        Grid.Row="1"
+                        Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                        Text="주막 정보를 설정합니다." />
+                </Grid>
+            </ui:CardExpander.Header>
+            <StackPanel>
+                <Grid Margin="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="주막 이름" />
+                    <TextBox
+                        Grid.Column="2"
+                        HorizontalAlignment="Stretch"
+                        Text="{Binding ViewModel.Name, Mode=TwoWay}" />
+                </Grid>
+
+                <ui:Button
+                    Margin="0,0,17,0"
+                    HorizontalAlignment="Right"
+                    Appearance="Primary"
+                    Command="{Binding ViewModel.SaveNameCommand, Mode=OneWay}"
+                    Content="적용"
+                    Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}" />
+            </StackPanel>
+        </ui:CardExpander>
+
+        <ui:CardExpander
+            Margin="0,0,0,12"
+            Icon="{ui:SymbolIcon Table48}"
+            IsExpanded="True">
+            <ui:CardExpander.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ui:TextBlock
+                        Grid.Row="0"
+                        FontTypography="Body"
+                        Text="테이블 정보" />
+                    <ui:TextBlock
+                        Grid.Row="1"
+                        Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                        Text="테이블 구성을 설정합니다." />
+                </Grid>
+            </ui:CardExpander.Header>
+            <StackPanel>
+                <Grid Margin="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="테이블 행" />
+                    <ui:NumberBox
+                        Grid.Column="2"
+                        HorizontalAlignment="Stretch"
+                        Value="{Binding ViewModel.Cols, Mode=TwoWay}" />
+                </Grid>
+                <Grid Margin="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="테이블 열" />
+                    <ui:NumberBox
+                        Grid.Column="2"
+                        HorizontalAlignment="Stretch"
+                        Value="{Binding ViewModel.Rows, Mode=TwoWay}" />
+                </Grid>
+                <ui:Button
+                    Margin="0,0,17,0"
+                    HorizontalAlignment="Right"
+                    Appearance="Primary"
+                    Command="{Binding ViewModel.SaveTableCommand, Mode=OneWay}"
+                    Content="적용"
+                    Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}" />
+            </StackPanel>
+        </ui:CardExpander>
+
+
+        <ui:TextBlock
+            Margin="0,24,0,8"
+            FontTypography="BodyStrong"
+            Text="소프트웨어 정보" />
+        <ui:CardExpander
+            ContentPadding="0"
+            Icon="{ui:ImageIcon 'pack://application:,,,/Assets/66167254.jpg',
+                                Width=38,
+                                Height=35}"
+            IsExpanded="True">
+            <ui:CardExpander.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ui:TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontTypography="Body"
+                        Text="StarlightPOS v1.0.0.0" />
+                    <ui:TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                        Text="© 2023 sh9596.kim@gmail.com | Sung-hwa Kim &amp; Starlight Lab" />
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Margin="0,0,16,0"
+                        VerticalAlignment="Center"
+                        Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                        Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
+                </Grid>
+            </ui:CardExpander.Header>
+            <StackPanel>
+                <Grid Margin="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="소스코드 복사" />
+                    <TextBlock
+                        Grid.Column="1"
+                        Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                        Text="git clone https://github.com/sh0622-kim" />
+                </Grid>
+                <ui:Anchor
+                    Margin="0"
+                    Padding="16"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Background="Transparent"
+                    BorderThickness="0,1,0,0"
+                    CornerRadius="0"
+                    NavigateUri="https://github.com/sh0622-kim">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="버그 리포트" />
+                        <ui:SymbolIcon Grid.Column="1" Symbol="Link24" />
+                    </Grid>
+                </ui:Anchor>
+
+            </StackPanel>
+        </ui:CardExpander>
+    </StackPanel>
+</Page>
